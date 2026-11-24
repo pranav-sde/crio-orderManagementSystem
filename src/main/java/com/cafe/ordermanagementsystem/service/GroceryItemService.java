@@ -1,5 +1,6 @@
 package com.cafe.ordermanagementsystem.service;
 
+import com.cafe.ordermanagementsystem.exception.ResourceNotFoundException;
 import com.cafe.ordermanagementsystem.exchange.GroceryItemRequestDTO;
 import com.cafe.ordermanagementsystem.exchange.GroceryItemResponseDTO;
 import com.cafe.ordermanagementsystem.entity.GroceryItemEntity;
@@ -60,7 +61,7 @@ public class GroceryItemService {
 
     public GroceryItemEntity findItemOrThrow(Long id) {
         return groceryItemRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Grocery item not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Grocery item not found with id: " + id));
     }
 
     public GroceryItemResponseDTO toResponseDTO(GroceryItemEntity item) {

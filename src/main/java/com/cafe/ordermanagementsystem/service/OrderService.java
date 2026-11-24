@@ -1,5 +1,6 @@
 package com.cafe.ordermanagementsystem.service;
 
+import com.cafe.ordermanagementsystem.exception.ResourceNotFoundException;
 import com.cafe.ordermanagementsystem.exchange.OrderRequestDTO;
 import com.cafe.ordermanagementsystem.exchange.OrderResponseDTO;
 import com.cafe.ordermanagementsystem.entity.CustomerEntity;
@@ -91,7 +92,7 @@ public class OrderService {
 
     private OrderEntity findOrderOrThrow(Long id) {
         return orderRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Order not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Order not found with id: " + id));
     }
 
     private OrderResponseDTO toResponseDTO(OrderEntity order) {
