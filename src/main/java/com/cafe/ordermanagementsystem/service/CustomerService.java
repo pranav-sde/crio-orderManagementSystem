@@ -21,6 +21,7 @@ public class CustomerService {
     public CustomerResponseDTO createCustomer(CustomerRequestDTO request) {
         CustomerEntity customer = new CustomerEntity();
         customer.setName(request.getName());
+        customer.setAddress(request.getAddress());
         customer.setEmail(request.getEmail());
         customer.setPhone(request.getPhone());
 
@@ -46,6 +47,7 @@ public class CustomerService {
         CustomerEntity customer = findCustomerOrThrow(id);
         customer.setName(request.getName());
         customer.setEmail(request.getEmail());
+        customer.setAddress(request.getAddress());
         customer.setPhone(request.getPhone());
 
         CustomerEntity updated = customerRepository.save(customer);
@@ -67,6 +69,7 @@ public class CustomerService {
                 .id(customer.getId())
                 .name(customer.getName())
                 .email(customer.getEmail())
+                .address(customer.getAddress())
                 .phone(customer.getPhone())
                 .build();
     }

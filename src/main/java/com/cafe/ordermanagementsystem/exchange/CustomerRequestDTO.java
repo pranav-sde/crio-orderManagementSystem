@@ -10,6 +10,7 @@ public class CustomerRequestDTO {
     private String name;
 
     private String email;
+    private String address;
 
     @NotBlank(message = "Phone number is required")
     private String phone;
